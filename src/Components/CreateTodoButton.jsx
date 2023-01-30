@@ -7,6 +7,11 @@ export function CreateTodoButton(props) {
     alert("Creando nuevo TODO...");
     };
     return (
-        <button className="CreateTodoButton" onClick={onClickButton}>+</button>
+        <button
+        className="CreateTodoButton"
+        onClick={onClickButton}
+        >
+            +
+        </button>
     );
 }
