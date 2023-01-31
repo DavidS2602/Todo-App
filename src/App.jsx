@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {AppUI} from './AppUI'
 import './App.css'
 
 /* const defaultTodos = [
@@ -7,12 +8,6 @@ import './App.css'
   { text: 'Llorar con la llorona', completed: false },
 ] */
 
-//Components
-import { TodoCounter } from './Components/TodoCounter'
-import { TodoSearch } from './Components/TodoSearch'
-import { TodoList } from './Components/TodoList'
-import { TodoItem } from './Components/TodoItem'
-import { CreateTodoButton } from './Components/CreateTodoButton'
 
 function App() {
   const localStorageTodos = localStorage.getItem('TODOS_V1')
@@ -65,28 +60,15 @@ function App() {
   }
 
   return (
-    <React.Fragment>
-      <TodoCounter
-        completedTodos={completedTodos}
-        totalTodos={totalTodos}
-      />
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-      <TodoList>
-        {searchedTodos.map (todo => (
-          <TodoItem
-          key={todo.text}
-          text={todo.text}
-          completed={todo.completed}
-          onComplete = {() => completeTodo (todo.text)}
-          onDelete = {() => deleteTodo (todo.text)}
-          />
-        ))}
-      </TodoList>
-      <CreateTodoButton />
-    </React.Fragment>
+    <AppUI
+      totalTodos={totalTodos}
+      completedTodos={completedTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
   )
 }
 
