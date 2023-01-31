@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import './App.css'
 
-const defaultTodos = [
+/* const defaultTodos = [
   { text: 'Cortar cebolla', completed: false },
   { text: 'Tomar el curso de intro a React', completed: false },
   { text: 'Llorar con la llorona', completed: false },
-]
+] */
 
 //Components
 import { TodoCounter } from './Components/TodoCounter'
@@ -15,7 +15,17 @@ import { TodoItem } from './Components/TodoItem'
 import { CreateTodoButton } from './Components/CreateTodoButton'
 
 function App() {
-  const [todos, setTodos] = useState(defaultTodos)
+  const localStorageTodos = localStorage.getItem('TODOS_V1')
+  let parsedTodos
+
+  if (!localStorageTodos) {
+    localStorage.setItem('TODOS_V1', JSON.stringify([]))//LocalStorage vacío
+    parsedTodos = []
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos)
+  }
+
+  const [todos, setTodos] = useState(parsedTodos)
   const [searchValue, setSearchValue] = useState('')
 
   const completedTodos = todos.filter(todo => !!todo.completed).length
@@ -33,18 +43,25 @@ function App() {
     })
   }
 
+
+  const saveTodos = (newTodos) => {
+    const stringifiedTodos = JSON.stringify(newTodos)
+    localStorage.setItem('TODOS_V1', stringifiedTodos)
+    setTodos(newTodos)//Actualiza el estado de la aplicación
+  }
+
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text === text)
     const newTodos = [...todos]
     newTodos[todoIndex].completed = true
-    setTodos(newTodos)
+    saveTodos(newTodos)//Le enviamos los datos a la función saveTodos
   }
 
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text === text)
     const newTodos = [...todos]
     newTodos.splice(todoIndex, 1)
-    setTodos(newTodos)
+    saveTodos(newTodos)//Le enviamos los datos a la función saveTodos
   }
 
   return (
