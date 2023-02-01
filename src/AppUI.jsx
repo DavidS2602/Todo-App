@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 //Components
 import { TodoContext } from "./TodoContext";
 import { TodoCounter } from './Components/TodoCounter'
@@ -8,18 +8,18 @@ import { TodoItem } from './Components/TodoItem'
 import { CreateTodoButton } from './Components/CreateTodoButton'
 
 export function AppUI() {
+    const {
+        error,
+        loading,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+    } = useContext(TodoContext)
     return (
         <React.Fragment>
             <TodoCounter/>
             <TodoSearch/>
-            <TodoContext.Consumer>
-                {({error,
-                    loading,
-                    searchedTodos,
-                    completeTodo,
-                    deleteTodo,
-                }) => (
-                    <TodoList>
+                <TodoList>
                     {error && <p>Ups, hubo un error...</p>}
                     {loading && <p>Cargando...</p>}
                     {(!loading && !searchedTodos.length) && <p>Crea tu primer TODO</p>}
@@ -33,9 +33,6 @@ export function AppUI() {
                         />
                     ))}
                 </TodoList>
-                
-                )}
-            </TodoContext.Consumer>
             <CreateTodoButton />
         </React.Fragment>
     )
