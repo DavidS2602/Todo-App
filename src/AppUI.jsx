@@ -7,8 +7,11 @@ import { TodoList } from './Components/TodoList'
 import { TodoItem } from './Components/TodoItem'
 import { CreateTodoButton } from './Components/CreateTodoButton'
 import { Modal } from './modal'
-import { TodoForm } from './TodoForm'
+import { TodoForm } from './Components/TodoForm'
 
+import { TodosError } from "./Components/TodosError";
+import { TodosLoading } from "./Components/TodosLoading";
+import { EmptyTodos } from "./Components/EmptyTodos";
 export function AppUI() {
     const {
         error,
@@ -24,9 +27,9 @@ export function AppUI() {
             <TodoCounter/>
             <TodoSearch/>
                 <TodoList>
-                    {error && <p>Ups, hubo un error...</p>}
-                    {loading && <p>Cargando...</p>}
-                    {(!loading && !searchedTodos.length) && <p>Crea tu primer TODO</p>}
+                    {error && <TodosError/>}
+                    {loading && <TodosLoading/>}
+                    {(!loading && !searchedTodos.length) && <EmptyTodos/>}
                     {searchedTodos.map (todo => (
                         <TodoItem
                         key={todo.text}
