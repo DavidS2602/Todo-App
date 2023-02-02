@@ -1,6 +1,6 @@
 import React from "react";
 
-import '../Styles/TodoItem.css'
+import './TodoItem.css'
 export function TodoItem(props) {
     const onComplete = () => {
         alert('Completaste el TODO ' + props.text);

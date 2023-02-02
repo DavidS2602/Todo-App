@@ -1,6 +1,6 @@
 import React from "react";
 
-import '../Styles/TodoList.css'
+import './TodoList.css'
 export function TodoList(props) {
     return (
         <section>
