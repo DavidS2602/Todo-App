@@ -7,6 +7,7 @@ import { TodoList } from './Components/TodoList'
 import { TodoItem } from './Components/TodoItem'
 import { CreateTodoButton } from './Components/CreateTodoButton'
 import { Modal } from './modal'
+import { TodoForm } from './TodoForm'
 
 export function AppUI() {
     const {
@@ -39,7 +40,7 @@ export function AppUI() {
 
                 {openModal && (
                     <Modal>
-                        <p>{searchedTodos[0]?.text}</p>
+                        <TodoForm/>
                     </Modal>
                 )}
             <CreateTodoButton

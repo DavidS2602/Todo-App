@@ -29,6 +29,15 @@ function TodoProvider(props) {
         })
     }
 
+    const addTodos = (text) => {
+        const newTodos = [...todos]
+        newTodos.push({
+            completed: false,
+            text,
+        })
+        saveTodos(newTodos)//Le enviamos los datos a la función saveTodos
+    }
+
     const completeTodo = (text) => {
         const todoIndex = todos.findIndex(todo => todo.text === text)
         const newTodos = [...todos]
@@ -51,6 +60,7 @@ function TodoProvider(props) {
         searchValue,
         setSearchValue,
         searchedTodos,
+        addTodos,
         completeTodo,
         deleteTodo,
         openModal,
