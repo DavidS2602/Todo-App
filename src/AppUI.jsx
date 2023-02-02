@@ -1,17 +1,17 @@
 import React, { useState, useContext } from "react";
 //Components
 import { TodoContext } from "./TodoContext";
-import { TodoCounter } from './Components/TodoCounter'
-import { TodoSearch } from './Components/TodoSearch'
-import { TodoList } from './Components/TodoList'
-import { TodoItem } from './Components/TodoItem'
-import { CreateTodoButton } from './Components/CreateTodoButton'
+import { TodoCounter } from './TodoCounter'
+import { TodoSearch } from './TodoSearch'
+import { TodoList } from './TodoList'
+import { TodoItem } from './TodoItem'
+import { CreateTodoButton } from './CreateTodoButton'
 import { Modal } from './modal'
-import { TodoForm } from './Components/TodoForm'
+import { TodoForm } from './TodoForm'
 
-import { TodosError } from "./Components/TodosError";
-import { TodosLoading } from "./Components/TodosLoading";
-import { EmptyTodos } from "./Components/EmptyTodos";
+import { TodosError } from "./TodosError";
+import { TodosLoading } from "./TodosLoading";
+import { EmptyTodos } from "./EmptyTodos";
 export function AppUI() {
     const {
         error,
