@@ -4,7 +4,7 @@ import "../Styles/CreateTodoButton.css";
 
 export function CreateTodoButton(props) {
     const onClickButton = () => {
-    alert("Creando nuevo TODO...");
+        props.setOpenModal(prevState => !prevState);
     };
     return (
         <button
