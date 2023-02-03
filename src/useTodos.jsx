@@ -1,9 +1,8 @@
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
-const TodoContext = createContext()
 
-function TodoProvider(props) {
+export function useTodos() {
     const {
         item: todos, //Renombrando
         saveItem: saveTodos, //Renombrando
@@ -51,8 +50,7 @@ function TodoProvider(props) {
         newTodos.splice(todoIndex, 1)
         saveTodos(newTodos)//Le enviamos los datos a la función saveTodos
     }
-    return (
-    <TodoContext.Provider value={{
+    return {
         loading,
         error,
         totalTodos,
@@ -65,10 +63,6 @@ function TodoProvider(props) {
         deleteTodo,
         openModal,
         setOpenModal,
-    }}>
-        {props.children}
-    </TodoContext.Provider>
-    )
+    }
 }
 
-export { TodoContext, TodoProvider }
