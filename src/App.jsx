@@ -1,19 +1,19 @@
 import React, {useEffect, useState, useContext} from 'react'
-import { useTodos } from './useTodos'
 import './App.css'
 
 //Components
+import { useTodos } from './useTodos'
+import { TodoHeader } from "./TodoHeader";
 import { TodoCounter } from './TodoCounter'
 import { TodoSearch } from './TodoSearch'
 import { TodoList } from './TodoList'
 import { TodoItem } from './TodoItem'
-import { CreateTodoButton } from './CreateTodoButton'
-import { Modal } from './modal'
-import { TodoForm } from './TodoForm'
-import { TodoHeader } from "./TodoHeader";
 import { TodosError } from "./TodosError";
 import { TodosLoading } from "./TodosLoading";
 import { EmptyTodos } from "./EmptyTodos";
+import { TodoForm } from './TodoForm'
+import { CreateTodoButton } from './CreateTodoButton'
+import { Modal } from './modal'
 
 function App() {
   const {
@@ -44,20 +44,24 @@ function App() {
         />
         </TodoHeader>
 
-        <TodoList>
-          {error && <TodosError/>}
-          {loading && <TodosLoading/>}
-          {(!loading && !searchedTodos.length) && <EmptyTodos/>}
-          {searchedTodos.map (todo => (
+
+        <TodoList
+          error={error}
+          loading={loading}
+          searchedTodos={searchedTodos}
+          onError={() => <TodosError />}
+          onLoading={() => <TodosLoading />}
+          onEmptyTodos={() => <EmptyTodos />}
+          render={todo => (
             <TodoItem
               key={todo.text}
               text={todo.text}
               completed={todo.completed}
-              onComplete = {() => completeTodo (todo.text)}
-              onDelete = {() => deleteTodo (todo.text)}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
             />
-          ))}
-        </TodoList>
+          )}
+        />
 
         {openModal && (
           <Modal>
