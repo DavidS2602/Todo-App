@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react'
+import React from 'react'
 import './App.css'
 
 //Components
@@ -33,16 +33,16 @@ function App() {
 
   return (
     <React.Fragment>
-      <TodoHeader>
+      <TodoHeader loading={loading}>
         <TodoCounter
           totalTodos={totalTodos}
-          completedTodos={completedTodos}
+          completed={completedTodos}
         />
         <TodoSearch
           searchValue={searchValue}
           setSearchValue={setSearchValue}
         />
-        </TodoHeader>
+      </TodoHeader>
 
 
         <TodoList

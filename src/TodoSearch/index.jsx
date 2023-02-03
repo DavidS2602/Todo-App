@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./TodoSearch.css";
 
-export function TodoSearch({ searchValue, setSearchValue }) {
+export function TodoSearch({ searchValue, setSearchValue, loading }) {
 
     return (
         <>
@@ -9,6 +9,7 @@ export function TodoSearch({ searchValue, setSearchValue }) {
             placeholder="Buscar TODO"
             value={searchValue}
             onChange={(event) => {setSearchValue(event.target.value)}}
+            disabled={loading}
             />
         </>
     );
