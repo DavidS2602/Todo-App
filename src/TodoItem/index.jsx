@@ -4,14 +4,6 @@ import { AiOutlineCheck } from "react-icons/ai";
 
 import './TodoItem.css'
 export function TodoItem(props) {
-    const onComplete = () => {
-        alert('Completaste el TODO ' + props.text);
-    }
-
-    const onDelete = () => {
-        alert('Eliminaste el TODO ' + props.text);
-    }
-
     return (
         <li className="TodoItem">
             <span onClick={props.onComplete} className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`}>
