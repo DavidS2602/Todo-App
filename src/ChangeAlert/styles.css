@@ -1,0 +1,40 @@
+.ChangeAlert-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #1e1e1f50;
+    z-index: 2;
+}
+.ChangeAlert-container {
+    position: fixed;
+    bottom: -10px;
+    left: -10px;
+    right: -10px;
+    padding: 34px;
+    background-color: #a5b7bd;
+    color: #f2f4f5;
+    z-index: 2;
+    text-align: center;
+    font-size: 20px;
+}
+
+.ChangeAlert-container button {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: #38a9c8;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
+.ChangeAlert-container button:hover, .ChangeAlert-container button:focus, .ChangeAlert-container button:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
