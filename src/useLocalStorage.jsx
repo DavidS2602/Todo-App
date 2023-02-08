@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export function useLocalStorage(itemName, initialValue) {
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(false)
-    const [item, setItem] = useState(initialValue)
+    const [loading, setLoading] = React.useState(true)
+    const [error, setError] = React.useState(false)
+    const [item, setItem] = React.useState(initialValue)
+    const [sincronizedItem, setSincronizedItem] = React.useState(true)
 
     //Hook de carga
-    useEffect(() => {
+    React.useEffect(() => {
         setTimeout(() => {
             try {
             const localStorageItem = localStorage.getItem(itemName)
@@ -21,12 +22,12 @@ export function useLocalStorage(itemName, initialValue) {
 
             setItem(parsedItem)//Actualiza el estado de la aplicación con la info del localStorage
             setLoading(false)
-
+            setSincronizedItem(true)
             } catch (error) {
             setError(error)
             }
-        }, 1000)
-    }, [])
+        }, 3000)
+    }, [sincronizedItem])
 
     const saveItem = (newItem) => {
         try {
@@ -37,10 +38,17 @@ export function useLocalStorage(itemName, initialValue) {
             setError(error)
         }
     }
+
+    const sincronizeItem = () => {
+        setLoading(true)
+        setSincronizedItem(false)
+    }
+
     return {
         item,
         saveItem,
         loading,
         error,
+        sincronizeItem
     }
 }
