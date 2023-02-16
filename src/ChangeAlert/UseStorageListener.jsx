@@ -1,6 +1,6 @@
 import React from "react";
 
-function UseStorageListener(sincronizeTodos) {
+function UseStorageListener(sincronize) {
     const [storageChange, setStorageChange] = React.useState(false)
 
     window.addEventListener('storage', (change) => {
@@ -10,13 +10,13 @@ function UseStorageListener(sincronizeTodos) {
         }
     })
 
-    const toggleShow = (value) => {
-        sincronizeTodos()
+    const toggleShow = () => {
+        sincronize()
         setStorageChange(false)
     }
 
     return {
-        show,
+        show: storageChange,
         toggleShow,
     }
 }
