@@ -2,8 +2,8 @@ import React from 'react'
 import { UseStorageListener } from './UseStorageListener';
 import './styles.css'
 
-export function ChangeAlert( { sincronizeTodos }) {
-    const { show, toggleShow } = UseStorageListener( sincronizeTodos )
+export function ChangeAlert( { sincronize }) {
+    const { show, toggleShow } = UseStorageListener( sincronize )
 
     if (show) {
         return (
