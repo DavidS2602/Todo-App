@@ -82,8 +82,8 @@ function App() {
           setOpenModal={setOpenModal}
         />
 
-        <changeAlert
-          sincronizeTodos={sincronizeTodos}
+        <ChangeAlert
+          sincronize={sincronizeTodos}
         />
     </React.Fragment>
   )
