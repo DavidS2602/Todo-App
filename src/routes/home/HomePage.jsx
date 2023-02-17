@@ -58,16 +58,16 @@ function HomePage() {
                 onEmptySearchResults = {
                     (searchText) => <p>No hay resultados para {searchText} </p>
                 }
-            render={todo => (
-                <TodoItem
-                key={todo.text}
-                text={todo.text}
-                completed={todo.completed}
-                onComplete={() => completeTodo(todo.text)}
-                onEdit={() => console.log('editando', todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
-                />
-            )}
+                render={todo => (
+                    <TodoItem
+                    key={todo.id}
+                    text={todo.text}
+                    completed={todo.completed}
+                    onComplete={() => completeTodo(todo.id)}
+                    onEdit={() => console.log('editando', todo.id)}
+                    onDelete={() => deleteTodo(todo.id)}
+                    />
+                )}
             />
 
             {openModal && (
