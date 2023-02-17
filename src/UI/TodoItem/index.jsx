@@ -13,7 +13,7 @@ export function TodoItem(props) {
             <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
                 {props.text}
             </p>
-            <span className="edit-icon">
+            <span className="edit-icon" onClick={props.onEdit}>
             < AiFillEdit size={26} />
             </span>
             <span onClick={props.onDelete} className="Icon Icon-delete">
