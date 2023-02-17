@@ -7,11 +7,12 @@ form {
     align-content: center;
     flex-direction: column;
     border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 label {
     text-align: center;
-    font-weight: bold;
+    font-weight: bold !important;
     color: #1E1E1F;
     margin-bottom: 26px;
     font-size: 20px;

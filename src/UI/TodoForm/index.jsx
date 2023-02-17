@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useTodos } from "../../routes/useTodos";
 
 import './TodoForm.css'
 
-export function TodoForm({ addTodos, setOpenModal, }) {
+export function TodoForm(props) {
+    const navigate = useNavigate()
     const [newTodoValue, setNewTodoValue] = useState("")
 
     const onChange = (event) => {
@@ -10,24 +13,35 @@ export function TodoForm({ addTodos, setOpenModal, }) {
     }
 
     const onCancel = () => {
-        setOpenModal(false)
+        navigate('/')
     }
     const onSubmit = (event) => {
         event.preventDefault()
-        setOpenModal(false)
-        addTodos(newTodoValue)
+        navigate('/')
+        props.submitEvent(newTodoValue)
     }
     return (
         <form onSubmit={onSubmit}>
-            <label>Escribe tu nuevo TODO</label>
+            <label>{props.label}</label>
             <textarea
                 value={newTodoValue}
                 onChange={onChange}
                 placeholder="Cortar la cebolla para el almuerzo"
             />
             <div className="TodoForm-buttonContainer">
-                <button className="TodoForm-button TodoForm-button--cancel" type="button" onClick={onCancel}>Cancelar</button>
-                <button className="TodoForm-button TodoForm-button-add" type="submit" >Añadir</button>
+                <button
+                    className="TodoForm-button TodoForm-button--cancel"
+                    type="button"
+                    onClick={onCancel}
+                    >
+                    Cancelar
+                </button>
+                <button
+                    className="TodoForm-button TodoForm-button-add"
+                    type="submit"
+                    >
+                    {props.submitText}
+                </button>
             </div>
         </form>
     )
