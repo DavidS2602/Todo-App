@@ -1,6 +1,7 @@
 import React from "react";
 import { BsTrashFill } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
+import { AiFillEdit } from "react-icons/ai";
 
 import './TodoItem.css'
 export function TodoItem(props) {
@@ -12,6 +13,9 @@ export function TodoItem(props) {
             <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
                 {props.text}
             </p>
+            <span className="edit-icon">
+            < AiFillEdit size={26} />
+            </span>
             <span onClick={props.onDelete} className="Icon Icon-delete">
                 <BsTrashFill />
             </span>
