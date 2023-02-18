@@ -27,7 +27,7 @@ export function useTodos() {
             return todoText.includes(searchText)
         })
     }
-
+    
     const addTodos = (text) => {
         const id = newTodoId(todos)
         const newTodos = [...todos]
@@ -39,6 +39,10 @@ export function useTodos() {
         saveTodos(newTodos)//Le enviamos los datos a la función saveTodos
     }
 
+    const getTodos = (id) => {
+        const todoIndex = todos.findIndex(todo => todo.id === id)
+        return todos[todoIndex]
+    }
     const completeTodo = (id) => {
         const todoIndex = todos.findIndex(todo => todo.id === id)
         const newTodos = [...todos]
@@ -67,6 +71,7 @@ export function useTodos() {
         setSearchValue,
         searchedTodos,
         addTodos,
+        getTodos,
         editTodo,
         completeTodo,
         deleteTodo,
@@ -81,7 +86,7 @@ export function useTodos() {
             const maxId = Math.max(...idList)
             return maxId + 1
         }
-
     }
+
 }
 

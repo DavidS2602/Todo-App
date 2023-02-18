@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 //Components
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTodos } from '../useTodos'
 import { TodoHeader } from "../../UI/TodoHeader";
 import { TodoCounter } from '../../UI/TodoCounter'
@@ -16,6 +16,7 @@ import { ChangeAlert } from '../../UI/ChangeAlert';
 
 function HomePage() {
     const navigate = useNavigate()
+    const location = useLocation()
     const {
         error,
         loading,
@@ -57,12 +58,16 @@ function HomePage() {
                 }
                 render={todo => (
                     <TodoItem
-                    key={todo.id}
-                    text={todo.text}
-                    completed={todo.completed}
-                    onComplete={() => completeTodo(todo.id)}
-                    onEdit={() => navigate(`/edit/${todo.id}`)}
-                    onDelete={() => deleteTodo(todo.id)}
+                        key={todo.id}
+                        text={todo.text}
+                        completed={todo.completed}
+                        onComplete={() => completeTodo(todo.id)}
+                        onEdit={() => {
+                            navigate(`/edit/${todo.id}`,{
+                                state: { todo }
+                            })
+                        } }
+                        onDelete={() => deleteTodo(todo.id)}
                     />
                 )}
             />
