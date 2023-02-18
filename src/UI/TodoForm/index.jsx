@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTodos } from "../../routes/useTodos";
 
 import './TodoForm.css'
 
@@ -17,8 +16,8 @@ export function TodoForm(props) {
     }
     const onSubmit = (event) => {
         event.preventDefault()
-        navigate('/')
         props.submitEvent(newTodoValue)
+        navigate('/')
     }
     return (
         <form onSubmit={onSubmit}>

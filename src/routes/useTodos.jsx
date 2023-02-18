@@ -12,7 +12,6 @@ export function useTodos() {
     } = useLocalStorage('TODOS_V2', [])
 
     const [searchValue, setSearchValue] = useState('')
-    const [openModal, setOpenModal] = useState(false)
 
     const completedTodos = todos.filter(todo => !!todo.completed).length
     const totalTodos = todos.length
@@ -46,6 +45,12 @@ export function useTodos() {
         newTodos[todoIndex].completed = true
         saveTodos(newTodos)//Le enviamos los datos a la función saveTodos
     }
+    const editTodo = (id, newText) => {
+        const todoIndex = todos.findIndex(todo => todo.id === id);
+        const newTodos = [...todos];
+        newTodos[todoIndex].text = newText;
+        saveTodos(newTodos);
+    };
 
     const deleteTodo = (id) => {
         const todoIndex = todos.findIndex(todo => todo.id === id)
@@ -62,11 +67,10 @@ export function useTodos() {
         setSearchValue,
         searchedTodos,
         addTodos,
+        editTodo,
         completeTodo,
         deleteTodo,
-        openModal,
-        setOpenModal,
-        sincronizeTodos
+        sincronizeTodos,
     }
 
     function newTodoId(todoList) {

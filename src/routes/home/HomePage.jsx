@@ -26,7 +26,6 @@ function HomePage() {
         completedTodos,
         searchValue,
         setSearchValue,
-        addTodos,
         sincronizeTodos,
     } = useTodos()
 
