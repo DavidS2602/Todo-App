@@ -19,7 +19,7 @@ export function EditTodoPage() {
         const todo = getTodos(id)
         todoText = todo.text
     }
-    
+
 
 
     return(
