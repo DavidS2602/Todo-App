@@ -2,7 +2,7 @@ import React from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { EditTodoPage } from './edit/EditTodoPage'
-import { HomePage } from './Home/HomePage'
+import { HomePage } from './home/HomePage'
 import { NewTodosPage } from './new/NewTodosPage'
 
 
